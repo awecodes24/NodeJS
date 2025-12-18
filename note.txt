@@ -1,0 +1,21 @@
+Frontend - ReactJS, VueJS, Angular
+Backend - NodeJS, Laravel , Django
+connecting = API (application programming interface)
+ORM - Object Relational Mapping is used to store data at DB
+FrameWork- all provided, secure
+Library = depends on external sources, flexible
+NodeJS is the runtime environment which helps to run JS in server-side or talk to OS in kernel level 
+NodeJS- developed by Ryan Dhal
+    npm- node package manager
+    npx-
+steps:
+1. npm init //npm init -y where -y is flags 
+2. node app.js 
+3. node --watch app.js 
+4. expressJS for FrameWork (npm install express) for express FrameWork 
+5.  Semantic versioning ^5.2.1 here major, minor, patch respectively 
+git and github to study 
+npmjs.com 
+in all nodeJS file:
+const express = require("express")
+const app = express()
