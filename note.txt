@@ -19,3 +19,7 @@ npmjs.com
 in all nodeJS file:
 const express = require("express")
 const app = express()
+127.0.0.1 = localhost = [::1] 
+"/" is route or api 
+get, post, put, patch, delete = http method/ http verbs 
+postman for api controls
