@@ -23,3 +23,7 @@ const app = express()
 "/" is route or api 
 get, post, put, patch, delete = http method/ http verbs 
 postman for api controls
+mongoDB atlas for database 
+mongoose is the ORM for MongoDB 
+
+mongodb+srv://nodejsworkshop:<db_password>@cluster0.hoti6vg.mongodb.net/?appName=Cluster0
