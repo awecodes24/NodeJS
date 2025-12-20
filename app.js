@@ -1,11 +1,10 @@
-const express = require("express")
-const dbConnection = require("./database/connection")
-const user = require("./models/userModel")
-const blog = require("./models/blog")
+import express from "express"
+import dbConnection from "./database/connection.js"
+import user from "./models/userModel.js"
+import blog from "./models/blog.js"
+import bcrypt from "bcrypt"
+import cors from "cors"
 const app = express()
-const bcrypt = require("bcrypt")
-
-const cors = require("cors");
 app.use(cors());
 
 

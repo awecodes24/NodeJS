@@ -1,5 +1,5 @@
 // title, subtile, description should be added in table
-const mongoose = require("mongoose")
+import mongoose from "mongoose"
 const schema = mongoose.Schema
 
 const blogSchema = new schema({
@@ -10,4 +10,4 @@ const blogSchema = new schema({
 
 const blog = mongoose.model("blog", blogSchema)
 
-module.exports = blog
+export default blog
