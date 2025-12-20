@@ -5,6 +5,10 @@ const blog = require("./models/blog")
 const app = express()
 const bcrypt = require("bcrypt")
 
+const cors = require("cors");
+app.use(cors());
+
+
 dbConnection()
 app.use(express.json()) //to parse json file
 
