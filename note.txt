@@ -26,4 +26,6 @@ postman for api controls
 mongoDB atlas for database 
 mongoose is the ORM for MongoDB 
 
-mongodb+srv://nodejsworkshop:<db_password>@cluster0.hoti6vg.mongodb.net/?appName=Cluster0
+mongodb+srv://nodejsworkshop:<db_password>@cluster0.hoti6vg.mongodb.net/?appName=Cluster0 
+
+app.use(express.json()) is used to parse file in JSON 
