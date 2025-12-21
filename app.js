@@ -3,10 +3,7 @@ import dbConnection from "./database/connection.js"
 import user from "./models/userModel.js"
 import blog from "./models/blog.js"
 import bcrypt from "bcrypt"
-import cors from "cors"
 const app = express()
-app.use(cors());
-
 
 dbConnection()
 app.use(express.json()) //to parse json file
