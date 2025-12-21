@@ -3,6 +3,7 @@ import dbConnection from "./database/connection.js"
 import user from "./models/userModel.js"
 import blog from "./models/blog.js"
 import bcrypt from "bcrypt"
+import "dotenv/config" //require("dotenv").config() 
 const app = express()
 
 dbConnection()
@@ -81,6 +82,7 @@ app.post ("/create-blog",async (req, res)=>{
     })
 })
 
+
 app.delete("/delete/:id", async (req,res)=>{
     const id = req.params.id
     await user.findByIdAndDelete(id)
@@ -105,6 +107,82 @@ app.delete("/delete", async (req, res)=>{
     })
 })
 
+app.get("/fetch-users/:id", async (req, res)=>{
+    //response ma user table ma vako user data sent garnu paryo
+    const id = req.params.id
+    const data = await user.findById(id).select(["-password", "-__v"])
+    res.json({
+        data: data
+    })
+
+})
+
+app.get("/blogs/:id", async (req, res)=>{
+    //response ma user table ma vako user data sent garnu paryo
+    const id = req.params.id
+    const data = await blog.findById(id).select(["-subtitle","-title"]) //select use to control the visibility of data
+    res.json({
+        data: data
+    })
+
+})
+
+app.patch("/update-user/:id", async (req, res)=>{
+    const id = req.params.id
+    const name = req.body.name
+    const password = req.body.name
+    const email = req.body.email
+    await user.findByIdAndUpdate(id, {
+        name : name,
+        password : bcrypt.hashSync(password,10),
+        email : email
+    })
+    res.json({
+        message : "updated successfully"
+    })
+})
+
+app.patch("/update-blog/:id", async (req,res)=>{
+    const id = req.params.id
+    const title = req.body.title
+    const subtitle = req.body.subtitle
+    const description = req.body.description
+    await blog.findByIdAndUpdate(id,{
+        title,
+        subtitle,
+        description
+        })
+    res.json ({
+        message: "blog updated successfully"
+    })
+})
+
 app.listen(3000, function(){ //3000 is the port number and function() is callback function and listen is the method
     console.log("server has started at port 3000");
 }) 
+
+
+// login
+
+
+app.post("/login",async (req,res)=>{
+    const {email,password} = req.body
+    const data = await user.findOne({email:email}) //when user is registered data is object of that user with id, email, password
+    console.log(data)
+    if(!data){
+        res.json({
+            message: "Email not registered"
+        })
+    } else {
+        const isMatched = bcrypt.compareSync(password, data.password) //compare the hashed password with past hashed password internally
+        if (isMatched){
+            res.json({
+                message: "logged in successfully"
+            })
+        }else{
+            res.json({
+                message: "Invalid password"
+            })
+        }
+    }
+})
